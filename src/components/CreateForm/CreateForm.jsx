@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import authServices from "../../Services/auth-services";
 import favoritePlaceServices from "../../Services/favorite-place-service";
 import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
-import Map from "../Map/Map.jsx";
+import Map from "../Map/Map";
 import {
   StyledFavoritePlaceForm,
   Error,

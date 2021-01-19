@@ -44,7 +44,7 @@ const Homepage = (props) => {
 
   const favoritePlacesList = favoritePlaces.map((place) => {
     return (
-      <FavoritePlace place={place} handleRefreshFavoritePlaces={refreshFavoritePlaces}/>
+      <FavoritePlace key={place._id} place={place} handleRefreshFavoritePlaces={refreshFavoritePlaces}/>
     );
   });
 
