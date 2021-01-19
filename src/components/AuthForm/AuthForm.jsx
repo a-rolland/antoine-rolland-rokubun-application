@@ -54,7 +54,7 @@ const AuthForm = (props) => {
         <React.Fragment>
           <label>Password</label>
           <Input
-            type="text"
+            type="password"
             name="password"
             value={formState.password}
             placeholder="*******"
