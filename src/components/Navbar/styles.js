@@ -6,11 +6,19 @@ export const StyledNavbar = styled.div`
   position: relative;
   top: 0;
   height: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const Brand = styled.h1`
+  font-size: 40px;
   font-style: italic;
+  /* font-family: 'Bubblegum Sans', cursive; */
+  font-family: 'Chelsea Market', cursive;
+  color: white;
 `;
 
 export const ButtonStyled = styled.button`

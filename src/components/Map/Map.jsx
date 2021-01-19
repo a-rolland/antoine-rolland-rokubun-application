@@ -24,6 +24,7 @@ const Map = (props) => {
       disableDefaultUI: false,
       mapTypeControl: true,
       streetViewControl: true,
+      mapTypeId: 'satellite',
       styles: [
         {
           featureType: "poi",

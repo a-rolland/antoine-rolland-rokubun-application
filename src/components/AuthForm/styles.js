@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledAuthForm = styled.div`
   text-align: center;
+  color: black
 `;
 
 export const Error = styled.p`

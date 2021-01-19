@@ -31,7 +31,7 @@ const FavoritePlace = (props) => {
         </MapContainer>
         <Description>
           <h2>{props.place.name}</h2>
-          <p>{props.place.description}</p>
+          <p>{props.place.description && props.place.description}</p>
           <ButtonStyled onClick={() => deleteFavoritePlace(props.place._id)}>
             DELETE
           </ButtonStyled>
