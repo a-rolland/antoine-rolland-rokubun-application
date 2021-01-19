@@ -1,22 +1,9 @@
 import styled from "styled-components";
 
-export const StyledNavbar = styled.div`
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 0;
-  height: 50px;
-  margin-bottom: 50px;
-`;
-
-export const Brand = styled.h1`
-  font-style: italic;
+export const StyledFavoritePlace = styled.li`
 `;
 
 export const ButtonStyled = styled.button`
-  position: absolute;
-  right: 20px;
-  top: 10px;
   padding: 14px 20px 12px;
   margin: 8px;
   display: inline-block;

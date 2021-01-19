@@ -9,6 +9,7 @@ const errorHandler = (err) => {
   throw err;
 };
 
+// eslint-disable-next-line
 export default {
   favoritePlaceServices,
 

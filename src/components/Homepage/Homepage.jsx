@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import favoritePlaceService from "../../Services/favorite-place-service";
 import CreateForm from "../CreateForm/CreateForm";
-import FavoritePlaces from "../FavoritePlaces/FavoritePlaces";
+import FavoritePlace from "../FavoritePlace/FavoritePlace"
 import { StyledHomepage, ButtonStyled } from "./styles";
 
 const Homepage = (props) => {
-  const [loggedInUser, setLoggedInUser] = useState(props.userInSession);
   const [displayForm, setDisplayForm] = useState(false);
   const [favoritePlaces, setFavoritePlaces] = useState([]);
 
@@ -19,48 +18,33 @@ const Homepage = (props) => {
   };
 
   useEffect(() => {
-    favoritePlaceService
-      .getFavoritePlaces({ author: loggedInUser.username })
+    if (props.userInSession) {
+      favoritePlaceService
+      .getFavoritePlaces({ author: props.userInSession.username })
       .then((response) => {
         setFavoritePlaces(response);
       })
       .catch((err) => {
         console.log("Error while getting favorite places");
       });
-  }, [loggedInUser.username]);
+    }
+    
+  }, [props.userInSession]);
 
   const refreshFavoritePlaces = () => {
     favoritePlaceService
-      .getFavoritePlaces({ author: loggedInUser.username })
+      .getFavoritePlaces({ author: props.userInSession.username })
       .then((response) => {
         setFavoritePlaces(response);
       })
       .catch((err) => {
         console.log("Error while getting favorite places");
-      });
-  };
-
-  const deleteFavoritePlace = (id) => {
-    favoritePlaceService
-      .deletePlace(id)
-      .then((response) => {
-        console.log("Place deleted:", response);
-        refreshFavoritePlaces();
-      })
-      .catch((err) => {
-        console.log("Error while deleting favorite place");
       });
   };
 
   const favoritePlacesList = favoritePlaces.map((place) => {
     return (
-      <li key={place.name}>
-        <h2>{place.name}</h2>
-        <p>{place.description}</p>
-        <ButtonStyled onClick={() => deleteFavoritePlace(place._id)}>
-          DELETE
-        </ButtonStyled>
-      </li>
+      <FavoritePlace place={place} handleRefreshFavoritePlaces={refreshFavoritePlaces}/>
     );
   });
 
@@ -69,7 +53,7 @@ const Homepage = (props) => {
       {props.userInSession ? (
         <>
           <h1>Hi {props.userInSession.username} !</h1>
-          <FavoritePlaces />
+          <p>Here is a list of your favorite places</p>
           {displayForm && (
             <CreateForm
               userInSession={props.userInSession}

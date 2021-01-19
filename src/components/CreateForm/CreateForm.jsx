@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import authServices from "../../Services/auth-services";
+// import authServices from "../../Services/auth-services";
 import favoritePlaceServices from "../../Services/favorite-place-service";
+import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
+import Map from "../Map/Map.jsx";
 import {
   StyledFavoritePlaceForm,
   Error,
@@ -16,11 +18,7 @@ const CreateForm = (props) => {
   const [formState, setFormState] = useState({
     name: "",
     description: "",
-    place: {
-      address: "",
-      lat: 0,
-      lng: 0,
-    },
+    place: null,
   });
 
   const handleFormSubmit = (event, formObject) => {
@@ -44,6 +42,17 @@ const CreateForm = (props) => {
     setFormState((state) => ({
       ...state,
       [name]: value,
+    }));
+  };
+
+  const setPlace = (newPlace) => {
+    setFormState((state) => ({
+      ...state,
+      place: {
+        address: newPlace.address,
+        lat: parseFloat(newPlace.lat),
+        lng: parseFloat(newPlace.lng),
+      },
     }));
   };
 
@@ -72,6 +81,23 @@ const CreateForm = (props) => {
             onChange={handleChange}
             onSubmit={(event) => handleFormSubmit(event, formState)}
           />
+        </React.Fragment>
+        <React.Fragment>
+          <label>Find the place</label>
+          <LocationSearchInput setPlace={setPlace} />
+          {formState.place && (
+            <React.Fragment>
+              <p>Is this the correct place ?</p>
+              <Map
+                formMap
+                key={formState.place.address}
+                address={formState.place.address}
+                lat={formState.place.lat}
+                lng={formState.place.lng}
+                zoom="14"
+              />
+            </React.Fragment>
+          )}
         </React.Fragment>
 
         <ButtonStyled type="submit">ADD</ButtonStyled>
