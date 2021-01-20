@@ -2,7 +2,6 @@ import Homepage from "./components/Homepage/Homepage";
 import Navbar from "./components/Navbar/Navbar";
 import AuthForm from "./components/AuthForm/AuthForm";
 import authServices from "./Services/auth-services";
-import { StyledApp } from "./styles";
 import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -55,7 +54,7 @@ const App = () => {
   };
 
   return (
-    <StyledApp>
+    <div>
       <Navbar
         userInSession={state.loggedInUser}
         getUser={getTheUser}
@@ -107,7 +106,7 @@ const App = () => {
           )}
         />
       </Switch>
-    </StyledApp>
+    </div>
   );
 };
 

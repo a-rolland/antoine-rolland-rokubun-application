@@ -2,50 +2,64 @@ import styled from "styled-components";
 
 export const StyledFavoritePlace = styled.li`
   list-style: none;
-  margin: 20px auto;
+  margin: 30px auto;
+
+  h2 {
+    @media (min-width: 667px) and (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
 `;
 
 export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 800px;
-`;
 
-export const MapContainer = styled.div`
-  height: auto; 
-  width: 300px;
+  @media (max-width: 667px) {
+    flex-direction: column;
+  }
 `;
 
 export const Description = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-width: 300px;
-margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 100px;
+  width: 250px;
+  text-align: left;
+
+  @media (max-width: 667px) {
+    align-items: center;
+    margin-left: 0;
+  }
+
+  @media (min-width: 667px) and (max-width: 768px) {
+    width: 200px;
+    margin-left: 50px;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    width: 225px;
+    margin-left: 80px;
+  }
 `;
 
-export const ButtonStyled = styled.button`
+export const DescriptionButton = styled.button`
   padding: 14px 20px 12px;
-  margin: 8px;
-  display: inline-block;
+  margin: 30px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  background-color: ${(props) => props.theme};
-  color: ${(props) => props.color};
-  width: ${(props) => props.width};
+
+  @media (max-width: 667px) {
+    margin: 20px 0 10px;
+  }
 
   &:hover {
     cursor: pointer;
     background-color: lightsteelblue;
   }
 `;
-
-ButtonStyled.defaultProps = {
-  theme: "white",
-  color: "black",
-};

@@ -13,35 +13,48 @@ export const StyledNavbar = styled.div`
   }
 `;
 
-export const Brand = styled.h1`
-  font-size: 40px;
-  font-style: italic;
-  /* font-family: 'Bubblegum Sans', cursive; */
-  font-family: 'Chelsea Market', cursive;
-  color: white;
-`;
+export const Brand = styled.img`
+  margin-top: 40px;
+  width: 350px;
 
-export const ButtonStyled = styled.button`
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  padding: 14px 20px 12px;
-  margin: 8px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color: ${(props) => props.theme};
-  color: ${(props) => props.color};
-  width: ${(props) => props.width};
+  @media (max-width: 400px) {
+    width: 175px;
+  }
 
-  &:hover {
-    cursor: pointer;
-    background-color: lightsteelblue;
+  @media (min-width: 400px) and (max-width: 500px) {
+    width: 225px;
+  }
+
+  @media (min-width: 500px) and (max-width: 768px) {
+    width: 275px;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    margin-top: 40px;
+    width: 325px;
   }
 `;
 
-ButtonStyled.defaultProps = {
-  theme: "white",
-  color: "black",
-};
+export const Logout = styled.div`
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  font-size: 34px;
+  cursor: pointer;
+
+  @media (max-width: 400px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 400px) and (max-width: 500px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 500px) and (max-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    font-size: 32px;
+  }
+`;

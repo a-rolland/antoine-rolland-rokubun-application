@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import authServices from "../../Services/auth-services";
 import favoritePlaceServices from "../../Services/favorite-place-service";
 import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
 import Map from "../Map/Map";
@@ -11,10 +10,11 @@ import {
   Form,
   Input,
   Textarea,
+  Message
 } from "./styles";
 
 const CreateForm = (props) => {
-  const [showError, setShowError] = useState("");
+  const [showError, setShowError] = useState(null)
   const [formState, setFormState] = useState({
     name: "",
     description: "",
@@ -101,12 +101,9 @@ const CreateForm = (props) => {
         </React.Fragment>
 
         <ButtonStyled type="submit">ADD</ButtonStyled>
+        {showError && <Error>{showError}</Error>}
       </Form>
-      <p style={{ textAlign: "center" }}>
-        {props.authMessage}
-        <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>
-      </p>
-      {showError && <Error>{showError}</Error>}
+      
     </StyledFavoritePlaceForm>
   );
 };

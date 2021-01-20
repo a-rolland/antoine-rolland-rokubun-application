@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledFavoritePlace, ButtonStyled, MapContainer, Description, Container } from "./styles";
+import { StyledFavoritePlace, DescriptionButton, Description, Container } from "./styles";
 import favoritePlaceService from "../../Services/favorite-place-service";
 import Map from "../Map/Map"
 
@@ -19,22 +19,19 @@ const FavoritePlace = (props) => {
   return (
     <StyledFavoritePlace>
       <Container>
-        <MapContainer>
-          <Map
-            formMap
-            key={props.place.place.address}
-            address={props.place.place.address}
-            lat={parseFloat(props.place.place.lat)}
-            lng={parseFloat(props.place.place.lng)}
-            zoom="14"
-          />
-        </MapContainer>
+        <Map
+          key={props.place.place.address}
+          address={props.place.place.address}
+          lat={parseFloat(props.place.place.lat)}
+          lng={parseFloat(props.place.place.lng)}
+          zoom="14"
+        />
         <Description>
           <h2>{props.place.name}</h2>
           <p>{props.place.description && props.place.description}</p>
-          <ButtonStyled onClick={() => deleteFavoritePlace(props.place._id)}>
+          <DescriptionButton onClick={() => deleteFavoritePlace(props.place._id)}>
             DELETE
-          </ButtonStyled>
+          </DescriptionButton>
         </Description>
       </Container>
     </StyledFavoritePlace>

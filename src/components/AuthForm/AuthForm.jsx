@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import authServices from "../../Services/auth-services";
-import { StyledAuthForm, Error, ButtonStyled, Form, Input } from "./styles";
+import {
+  StyledAuthForm,
+  Error,
+  ButtonStyled,
+  Form,
+  Input,
+  Message,
+} from "./styles";
 
 const AuthForm = (props) => {
   const [showError, setShowError] = useState("");
   const [formState, setFormState] = useState({
     username: "",
     password: "",
-  })
+  });
 
   const handleFormSubmit = (event, formObject) => {
     event.preventDefault();
@@ -59,19 +66,19 @@ const AuthForm = (props) => {
             value={formState.password}
             placeholder="*******"
             onChange={handleChange}
-            onSubmit={(event) => handleFormSubmit(event, formState)} 
+            onSubmit={(event) => handleFormSubmit(event, formState)}
           />
         </React.Fragment>
 
         <ButtonStyled type="submit">
           {props.login ? "LOGIN" : "SIGN UP"}
         </ButtonStyled>
+        {showError && <Error>{showError}</Error>}
       </Form>
-      <p style={{"textAlign": "center"}}>
+      <Message style={{ textAlign: "center" }}>
         {props.authMessage}
         <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>
-      </p>
-      {showError && <Error>{showError}</Error>}
+      </Message>
     </StyledAuthForm>
   );
 };
