@@ -1,83 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import authServices from "../../Services/auth-services";
-import Button from "../ElementalComponents/Button/Button";
-import {
-  StyledAuthForm,
-  Error,
-  Form,
-  Input,
-  Message,
-} from "./styles";
+import React from "react";
+import Form from "../ElementalComponents/Form/Form";
 
 const AuthForm = (props) => {
-  const [showError, setShowError] = useState("");
-  const [formState, setFormState] = useState({
-    username: "",
-    password: "",
-  });
+  const authFields = [
+    {
+      name: "username",
+      label: "Username",
+      type: "text",
+      placeholder: "Enter your username",
+      input: "input",
+    },
+    {
+      name: "password",
+      label: "Password",
+      type: "password",
+      placeholder: "******",
+      input: "input",
+    },
+  ];
 
-  const handleFormSubmit = (event, formObject) => {
-    event.preventDefault();
-    const dynamicService = props.login
-      ? authServices.login(formObject)
-      : authServices.signup(formObject);
-
-    dynamicService
-      .then((response) => {
-        localStorage.setItem("loggedInUser", JSON.stringify(response));
-        props.getUser(response);
-        props.history.push("/");
-      })
-      .catch((error) => {
-        console.log("Error while login/signup");
-        setShowError(error.response.data.message);
-      });
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormState((state) => ({
-      ...state,
-      [name]: value,
-    }));
-  };
-
-  return (
-    <StyledAuthForm>
-      <Form onSubmit={(event) => handleFormSubmit(event, formState)}>
-        <h3>{props.login ? "LOGIN" : "SIGNUP"}</h3>
-
-        <React.Fragment>
-          <label>Username</label>
-          <Input
-            type="text"
-            name="username"
-            value={formState.username}
-            placeholder="Enter your username"
-            onChange={handleChange}
-          />
-        </React.Fragment>
-        <React.Fragment>
-          <label>Password</label>
-          <Input
-            type="password"
-            name="password"
-            value={formState.password}
-            placeholder="*******"
-            onChange={handleChange}
-            onSubmit={(event) => handleFormSubmit(event, formState)}
-          />
-        </React.Fragment>
-        <Button type="submit" text={props.login ? "LOGIN" : "SIGN UP"} />
-        {showError && <Error>{showError}</Error>}
-      </Form>
-      <Message style={{ textAlign: "center" }}>
-        {props.authMessage}
-        <Link to={`${props.formRedirectLink}`}>{props.formRedirectText}</Link>
-      </Message>
-    </StyledAuthForm>
-  );
+  return <Form authForm {...props} fields={authFields} />;
 };
 
 export default AuthForm;

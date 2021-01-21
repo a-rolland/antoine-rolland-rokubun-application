@@ -4,11 +4,7 @@ import favoritePlaceService from "../../Services/favorite-place-service";
 import CreateForm from "../CreateForm/CreateForm";
 import Button from "../ElementalComponents/Button/Button";
 import FavoritePlace from "../FavoritePlace/FavoritePlace";
-import {
-  StyledHomepage,
-  FavoritePlacesListContainer,
-  Visitor
-} from "./styles";
+import { StyledHomepage, FavoritePlacesListContainer, Visitor } from "./styles";
 
 const Homepage = (props) => {
   const [displayForm, setDisplayForm] = useState(false);
@@ -61,8 +57,13 @@ const Homepage = (props) => {
       {props.userInSession ? (
         <>
           <h1>Hi {props.userInSession.username} !</h1>
-          <p>Here is a list of your favorite places</p>
-          <Button handleClick={toggleForm} text={displayForm ? "CLOSE" : "ADD A NEW FAVORITE PLACE"} />
+          <Button
+            handleClick={toggleForm}
+            text={displayForm ? "CLOSE" : "ADD A NEW FAVORITE PLACE"}
+          />
+          {favoritePlaces.length > 2 && (
+            <h2>Here is a list of your favorite places :</h2>
+          )}
           {displayForm && (
             <CreateForm
               userInSession={props.userInSession}

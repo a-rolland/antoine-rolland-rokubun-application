@@ -24,7 +24,7 @@ const Map = (props) => {
       disableDefaultUI: false,
       mapTypeControl: true,
       streetViewControl: true,
-      mapTypeId: 'satellite',
+      mapTypeId: "satellite",
       styles: [
         {
           featureType: "poi",
@@ -85,9 +85,7 @@ const Map = (props) => {
   };
 
   return (
-    <MapContainer
-      formMap={props.formMap}
-    >
+    <MapContainer formMap={props.formMap}>
       <GoogleMapReact
         key={state.name}
         bootstrapURLKeys="AIzaSyC5R2OYlhvGRMmpofdkJ0jL60Tsa7dtZUY"

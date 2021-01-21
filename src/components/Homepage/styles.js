@@ -6,16 +6,16 @@ const slideup = keyframes`
 `;
 
 export const Visitor = styled.div`
-  position: absolute; 
+  position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   animation: ${slideup} 1s;
 `;
 
 export const StyledHomepage = styled.div`
   text-align: center;
-
+  padding-bottom: 20px;
 `;
 
 export const FavoritePlacesListContainer = styled.ul`

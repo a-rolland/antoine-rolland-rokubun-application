@@ -5,14 +5,16 @@ export const ButtonStyled = styled.button`
   margin: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-family: 'Comfortaa', cursive;
+  font-family: "Comfortaa", cursive;
 
   &:hover {
     cursor: pointer;
     background-color: lightsteelblue;
   }
 
-  ${props => props.descriptionButton && `
+  ${(props) =>
+    props.descriptionButton &&
+    `
     margin: 30px 0;
 
     @media (max-width: 667px) {

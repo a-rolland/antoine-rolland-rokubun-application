@@ -12,14 +12,18 @@ export const StyledFavoritePlace = styled.li`
 `;
 
 export const Container = styled.div`
-  margin: 0 auto;
+  margin: 0 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  padding: 10px;
 
   @media (max-width: 667px) {
     flex-direction: column;
+    margin: 0 auto;
   }
 `;
 
