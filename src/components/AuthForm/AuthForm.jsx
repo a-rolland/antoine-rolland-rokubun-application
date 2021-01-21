@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import authServices from "../../Services/auth-services";
+import Button from "../ElementalComponents/Button/Button";
 import {
   StyledAuthForm,
   Error,
-  ButtonStyled,
   Form,
   Input,
   Message,
@@ -69,10 +69,7 @@ const AuthForm = (props) => {
             onSubmit={(event) => handleFormSubmit(event, formState)}
           />
         </React.Fragment>
-
-        <ButtonStyled type="submit">
-          {props.login ? "LOGIN" : "SIGN UP"}
-        </ButtonStyled>
+        <Button type="submit" text={props.login ? "LOGIN" : "SIGN UP"} />
         {showError && <Error>{showError}</Error>}
       </Form>
       <Message style={{ textAlign: "center" }}>

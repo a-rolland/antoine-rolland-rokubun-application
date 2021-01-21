@@ -47,19 +47,3 @@ export const Description = styled.div`
     margin-left: 80px;
   }
 `;
-
-export const DescriptionButton = styled.button`
-  padding: 14px 20px 12px;
-  margin: 30px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-
-  @media (max-width: 667px) {
-    margin: 20px 0 10px;
-  }
-
-  &:hover {
-    cursor: pointer;
-    background-color: lightsteelblue;
-  }
-`;

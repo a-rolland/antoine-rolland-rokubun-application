@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import favoritePlaceService from "../../Services/favorite-place-service";
 import CreateForm from "../CreateForm/CreateForm";
+import Button from "../ElementalComponents/Button/Button";
 import FavoritePlace from "../FavoritePlace/FavoritePlace";
 import {
   StyledHomepage,
-  ButtonStyled,
   FavoritePlacesListContainer,
   Visitor
 } from "./styles";
@@ -62,9 +62,7 @@ const Homepage = (props) => {
         <>
           <h1>Hi {props.userInSession.username} !</h1>
           <p>Here is a list of your favorite places</p>
-          <ButtonStyled onClick={toggleForm}>
-            {displayForm ? "CLOSE" : "ADD A NEW FAVORITE PLACE"}
-          </ButtonStyled>
+          <Button handleClick={toggleForm} text={displayForm ? "CLOSE" : "ADD A NEW FAVORITE PLACE"} />
           {displayForm && (
             <CreateForm
               userInSession={props.userInSession}
@@ -82,10 +80,10 @@ const Homepage = (props) => {
         <Visitor>
           <h1>Welcome to myFavoritePlaces!</h1>
           <Link to="login">
-            <ButtonStyled>LOGIN</ButtonStyled>
+            <Button text="LOGIN" />
           </Link>
           <Link to="signup">
-            <ButtonStyled>SIGN UP</ButtonStyled>
+            <Button text="SIGN UP" />
           </Link>
         </Visitor>
       )}

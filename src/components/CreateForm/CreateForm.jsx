@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import favoritePlaceServices from "../../Services/favorite-place-service";
+import Button from "../ElementalComponents/Button/Button";
 import LocationSearchInput from "../LocationSearchInput/LocationSearchInput";
 import Map from "../Map/Map";
 import {
   StyledFavoritePlaceForm,
   Error,
-  ButtonStyled,
   Form,
   Input,
   Textarea,
-  Message
 } from "./styles";
 
 const CreateForm = (props) => {
@@ -100,7 +98,7 @@ const CreateForm = (props) => {
           )}
         </React.Fragment>
 
-        <ButtonStyled type="submit">ADD</ButtonStyled>
+        <Button type="submit" text="ADD" />
         {showError && <Error>{showError}</Error>}
       </Form>
       
