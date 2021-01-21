@@ -61,7 +61,7 @@ const Homepage = (props) => {
             handleClick={toggleForm}
             text={displayForm ? "CLOSE" : "ADD A NEW FAVORITE PLACE"}
           />
-          {favoritePlaces.length > 2 && (
+          {favoritePlaces.length > 0 && (
             <h2>Here is a list of your favorite places :</h2>
           )}
           {displayForm && (
